@@ -1,0 +1,13 @@
+@import '../components/global_styles/variables.scss';
+
+.navWrapper {
+  margin: 0 auto;
+  padding: 0 $padding-lg;
+  border-bottom: 1px solid #F3F3F3;
+  text-align: center;
+}
+
+.navLi {
+  padding: $padding-md $padding-lg;
+  display: inline-block;
+}
