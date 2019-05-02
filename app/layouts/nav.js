@@ -1,4 +1,4 @@
-import { Link } from '../../server/routes';
+import { Link } from '../server/routes';
 import { withRouter } from 'next/router'
 
 import css from './nav.scss';

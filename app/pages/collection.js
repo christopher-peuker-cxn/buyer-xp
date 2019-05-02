@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Page from '../layouts/page';
 import Error from 'next/error';
-import { Link } from '../../server/routes';
+import { Link } from '../server/routes';
 import API_URL from '../utils/basepath';
 
 import css from './collection.scss';

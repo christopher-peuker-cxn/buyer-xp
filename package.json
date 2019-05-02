@@ -6,7 +6,7 @@
   "lisence": "ISC",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/index.js",
+    "dev": "nodemon app/server/index.js",
     "build": "next build ./app",
     "start": "next start ./app"
   },

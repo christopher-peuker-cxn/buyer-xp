@@ -1,5 +1,5 @@
 import Page from '../layouts/page';
-import { Link } from '../../server/routes'
+import { Link } from '../server/routes'
 
 const Index = (props) => {
   return (
