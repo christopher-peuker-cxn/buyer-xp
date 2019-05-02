@@ -3,7 +3,7 @@ import { Link } from '../../server/routes'
 
 const Index = (props) => {
   return (
-    <Page title={ props.title }>
+    <Page title='Homepage'>
       <h1>CXN Fashion Homepage</h1>
       <Link route='collections'><a>Shop Collections</a></Link>
     </Page>

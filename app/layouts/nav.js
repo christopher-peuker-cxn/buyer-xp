@@ -6,6 +6,7 @@ import css from './nav.scss';
 const Nav = ({ router }) => {
   return (
     <nav className={css.navWrapper}>
+      <Link route='/'><a><img className={css.logo} src='/static/logo.png' alt='cxn logo'/></a></Link>
       <ul>
         <li className={css.navLi}><Link route='/collections'><a className={router.pathname == '/collections'? 'active' : ''}>Collections</a></Link></li>
         <li className={css.navLi}><Link route='/account'><a>Account</a></Link></li>

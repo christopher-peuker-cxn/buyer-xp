@@ -1,6 +1,7 @@
 @import '../components/global_styles/variables.scss';
 
 .navWrapper {
+  position: relative;
   margin: 0 auto;
   padding: 0 $padding-lg;
   border-bottom: 1px solid #F3F3F3;
@@ -10,4 +11,11 @@
 .navLi {
   padding: $padding-md $padding-lg;
   display: inline-block;
+}
+
+.logo {
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  background-color: $color-black-01;
 }
