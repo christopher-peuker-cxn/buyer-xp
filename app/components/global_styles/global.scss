@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -35,15 +37,9 @@ a {
   text-decoration: none;
   text-transform: none;
   cursor: pointer;
-  color: black;
+  color: $color-link-light;
   background-color: transparent;
-  transition: color 200ms ease;
-  &:hover {
-    color: #9C9C9C;
-  }
-  &.active {
-    color: #9C9C9C;
-  }
+  white-space: nowrap;
 }
 
 /**
