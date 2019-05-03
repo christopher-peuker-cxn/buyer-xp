@@ -35,8 +35,8 @@ const Nav = ({ router }) => {
     }
     )));
   const lightModeBg = useSpring({ backgroundColor: lightMode ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0)' });
-  const lightModeRack = useSpring({ color: lightMode ? '#000000' : '#FFFFFF' });
-  const lightModeRackBg = useSpring({ backgroundColor: lightMode ? '#dadada' : '#FFFFFF' });
+  const lightModeRack = useSpring({ color: lightMode ? '#000000' : '#FFFFFF', config: { tension: 1000 } });
+  const lightModeRackBg = useSpring({ backgroundColor: lightMode ? '#dadada' : '#FFFFFF', config: { tension: 1000 } });
 
   return (
     <animated.nav className={ css.navWrapper } style={ lightModeBg } onMouseEnter={() => setLightMode(true)} onMouseLeave={() => setLightMode(false)}>
