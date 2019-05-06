@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head';
+import cx from 'classnames';
 import Nav from './nav';
 
 import css from './page.scss';
@@ -18,7 +19,7 @@ const Page = ({ children, title }) => {
       <header>
         <Nav />
       </header>
-      <main className={ css.mainWrapper }>
+      <main className={ cx(css.mainWrapper, 'grid') }>
         { children }
       </main>
     </Fragment>

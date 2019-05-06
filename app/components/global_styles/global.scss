@@ -11,7 +11,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -82,4 +82,58 @@ button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
+}
+
+
+.grid {
+  position: relative;
+
+  .row {
+    display: block;
+    width: 100%;
+  }
+
+  [class^='col-'] {
+    display: inline-block;
+    padding: 0px 10px;
+  }
+
+  .col-1 {
+    width: 8.33333333333333%;
+  }
+
+  .col-2 {
+    width: 16.66666666666667%;
+  }
+
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.333333333333333%;
+  }
+  .col-5 {
+    width: 41.66666666666667%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33333333333333%;
+  }
+  .col-8 {
+    width: 66.66666666666667%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33333333333333%;
+  }
+  .col-11 {
+    width: 91.66666666666667%;
+  }
+  .col-12 {
+    width: 100%;
+  }
 }
