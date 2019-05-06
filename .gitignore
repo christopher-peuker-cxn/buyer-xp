@@ -1,0 +1,4 @@
+node_modules/
+app/.next/
+app/.DS_Store
+.vscode
