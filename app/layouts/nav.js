@@ -40,7 +40,7 @@ const Nav = ({ router }) => {
 
   return (
     <animated.nav className={ css.navWrapper } style={ lightModeBg } onMouseEnter={() => setLightMode(true)} onMouseLeave={() => setLightMode(false)}>
-      <Link route='/'><a className={ cx(css.sides, css.logoWrapper) }><img className={ css.logo } src='/static/logo.png' alt='cxn logo'/></a></Link>
+      <div className={ cx(css.sides, css.logoWrapper) }><Link route='/'><a><img className={ css.logo } src='/static/logo.png' alt='cxn logo'/></a></Link></div>
       <ul>
         { navLinksAnimated.map((props, i) => <li key={ i }><Link route={ navLinks[i].route }><animated.a style={ props } className={ cx({['active']: setActiveClass(navLinks[i].route)}) }>{ navLinks[i].name }</animated.a></Link></li>) }
       </ul>
