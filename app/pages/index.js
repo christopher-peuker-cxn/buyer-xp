@@ -1,41 +1,65 @@
-import { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useState, Fragment } from 'react';
+import { useTrail, useSpring, animated } from 'react-spring';
 import Page from '../layouts/page';
 import css from './index.scss';
 
 import CollectionSlideWrapper from '../components/collections/collection_slide_wrapper';
 import CollectionSlide from '../components/collections/collection_slide';
 
-const FAKE_DATA = [
-  {
-    link: '/test1',
-    url: '/static/slide_01.jpg'
+const FAKE_DATA = {
+  video: {
+    url: 'https://www.youtube-nocookie.com/embed/CVgnzuJgI94?modestbranding=1&rel=0&autohide=1&showinfo=0&controls=0&autoplay=1&loop=1&enablejsapi=1',
   },
-  {
-    link: '/test2',
-    url: '/static/slide_02.jpg'
-  },
-  {
-    link: '/test3',
-    url: '/static/slide_03.jpg'
-  },
-]
+  slides: [
+    {
+      link: '/test1',
+      url: '/static/slide_01.jpg'
+    },
+    {
+      link: '/test2',
+      url: '/static/slide_02.jpg'
+    },
+    {
+      link: '/test3',
+      url: '/static/slide_03.jpg'
+    },
+  ]
+}
 
 const Index = (props) => {
   const [videoInactive, setVideoInactive] = useState(false);
+  const [videoFadeOut, setVideoFadeOut] = useState(false);
+  const [videoSrc, setVideoSrc] = useState(FAKE_DATA.video.url);
 
   const wrapperAnimation = useSpring({
-    transform: videoInactive ? 'translateX(-100%)' : 'translateX(0%)'
+    transform: videoInactive ? 'translateX(0%)' : 'translateX(100%)',
+    config: {
+      tension: 100
+    }
+  })
+
+  const fadeOut = useSpring({
+    opacity: videoFadeOut ? 1 : 0,
+    onRest: () => {
+      if (videoFadeOut) {
+        setVideoInactive(true);
+        setVideoSrc('');
+      }
+    }
   })
 
   return (
     <Page title='Homepage'>
-      <animated.div className={ css.animationWrapper } style={ wrapperAnimation }>
-        <div className={ css.homepageWrapper } onClick={() => setVideoInactive(true)}/>
-        <CollectionSlideWrapper>
-          { FAKE_DATA.map((collection, i) => <CollectionSlide key={ i } url={ collection.url } name={ collection.name } classes='col-4'/>) }
-        </CollectionSlideWrapper>
-      </animated.div>
+      <Fragment>
+        <iframe className={ css.videoWrapper } src={ videoSrc } frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
+        <animated.div style={ fadeOut } className={ css.videoWrapperOverlay } onClick={() => setVideoSrc(videoSrc? '' : FAKE_DATA.video.url) }/>
+        <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW ---------></div>
+        <animated.div className={ css.animationWrapper } style={ wrapperAnimation } >
+          <CollectionSlideWrapper>
+            { FAKE_DATA.slides.map((collection, i) => <CollectionSlide key={ i } classes='col-4 no-padding-sides' url={ collection.url } name={ collection.name }/>) }
+          </CollectionSlideWrapper>
+        </animated.div>
+      </Fragment>
     </Page>
   )
 }

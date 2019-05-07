@@ -11,10 +11,11 @@ const Page = ({ children, title }) => {
       <Head>
         <title>{`CXN Fashion - ${ title }`}</title>
         <meta
-          nasme="viewport"
-          content="initial-scale=1.0, width=device-width"
-          key="viewport"
+          nasme='viewport'
+          content='initial-scale=1.0, width=device-width'
+          key='viewport'
         />
+        <link rel='stylesheet' type='text/css' href='/static/global.css'/>
       </Head>
       <header>
         <Nav />

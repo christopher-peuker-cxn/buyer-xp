@@ -1,11 +1,39 @@
-.homepageWrapper {
+@import '../components/global_styles/variables';
+
+.videoWrapper {
+  position: absolute;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: $color-black-01;
+}
+
+.videoWrapperOverlay {
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0px;
   left: 0px;
-  background-image: url('/static/homepage_placeholder.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center top;
+  z-index: 1;
+  background-color: $color-black-01;
+}
+
+.showCollections {
+  position: fixed;
+  padding: 20px;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  color: $color-white-01;
+  z-index: 2;
+}
+
+.animationWrapper {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  overflow: hidden;
 }
