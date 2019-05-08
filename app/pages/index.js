@@ -1,5 +1,5 @@
 import { useState, Fragment } from 'react';
-import { useTrail, useSpring, animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import Page from '../layouts/page';
 import css from './index.scss';
 
@@ -12,16 +12,22 @@ const FAKE_DATA = {
   },
   slides: [
     {
+      name: 'Collection #1',
       link: '/test1',
-      url: '/static/slide_01.jpg'
+      url: '/static/slide_01.jpg',
+      id: 1
     },
     {
+      name: 'Collection #2',
       link: '/test2',
-      url: '/static/slide_02.jpg'
+      url: '/static/slide_02.jpg',
+      id: 2
     },
     {
+      name: 'Collection #3',
       link: '/test3',
-      url: '/static/slide_03.jpg'
+      url: '/static/slide_03.jpg',
+      id: 3
     },
   ]
 }
@@ -56,7 +62,7 @@ const Index = (props) => {
         <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW ---------></div>
         <animated.div className={ css.animationWrapper } style={ wrapperAnimation } >
           <CollectionSlideWrapper>
-            { FAKE_DATA.slides.map((collection, i) => <CollectionSlide key={ i } classes='col-4 no-padding-sides' url={ collection.url } name={ collection.name }/>) }
+            { FAKE_DATA.slides.map((collection, i) => <CollectionSlide key={ i } classes='column no-padding-sides' {...collection}/>) }
           </CollectionSlideWrapper>
         </animated.div>
       </Fragment>
