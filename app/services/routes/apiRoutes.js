@@ -5,7 +5,7 @@ const {
   getCollectionById,
   getCollectionProducts,
   getCollectionLooks
-} = require('../controllers/collection-controller');
+} = require('../controllers/collection_service');
 
 // api routes, move those into a seperate file at some point
 routes.get('/api/collections', getAllCollections);
