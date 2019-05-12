@@ -4,7 +4,6 @@ import Page from '../layouts/page';
 import css from './index.scss';
 
 import CollectionSlideWrapper from '../components/collections/collection_slide_wrapper';
-import CollectionSlide from '../components/collections/collection_slide';
 
 const FAKE_DATA = {
   video: {
@@ -12,22 +11,31 @@ const FAKE_DATA = {
   },
   slides: [
     {
-      name: 'Collection #1',
+      designer: 'DESIGNER NAME',
+      collectionName: 'NUDE',
+      season: 'SS\'19',
       link: '/test1',
       url: '/static/slide_01.jpg',
-      id: 1
+      id: 1,
+      themeBlack: false,
     },
     {
-      name: 'Collection #2',
+      designer: 'DESIGNER NAME',
+      collectionName: 'THE REAL PANTS',
+      season: 'SS\'19',
       link: '/test2',
       url: '/static/slide_02.jpg',
-      id: 2
+      id: 2,
+      themeBlack: true,
     },
     {
-      name: 'Collection #3',
+      designer: 'DESIGNER NAME',
+      collectionName: 'FABRIK',
+      season: 'SS\'19',
       link: '/test3',
       url: '/static/slide_03.jpg',
-      id: 3
+      id: 3,
+      themeBlack: false,
     },
   ]
 }
@@ -59,11 +67,9 @@ const Index = (props) => {
       <Fragment>
         <iframe className={ css.videoWrapper } src={ videoSrc } frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
         <animated.div style={ fadeOut } className={ css.videoWrapperOverlay } onClick={() => setVideoSrc(videoSrc? '' : FAKE_DATA.video.url) }/>
-        <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW ---------></div>
+        <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW —></div>
         <animated.div className={ css.animationWrapper } style={ wrapperAnimation } >
-          <CollectionSlideWrapper>
-            { FAKE_DATA.slides.map((collection, i) => <CollectionSlide key={ i } classes='column no-padding-sides' {...collection}/>) }
-          </CollectionSlideWrapper>
+          <CollectionSlideWrapper slides={ FAKE_DATA.slides }/>
         </animated.div>
       </Fragment>
     </Page>

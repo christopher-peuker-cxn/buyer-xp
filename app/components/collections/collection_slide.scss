@@ -4,6 +4,7 @@
   position: relative;
   height: 100%;
   overflow: hidden;
+  flex:10;
 }
 
 .collectionImage {
@@ -34,6 +35,9 @@
   color: $color-white-01;
   white-space: nowrap;
   text-transform: uppercase;
+  &.themeBlack {
+    color: $color-black-01;
+  }
   &:before {
     content: '—';
     position: absolute;
