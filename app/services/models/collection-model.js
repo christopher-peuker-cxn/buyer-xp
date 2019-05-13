@@ -14,9 +14,42 @@ const looks_mock_data = [
   {collectionId: 3, data: [{name: 'look_1_for_collection_3', id: 15}, {name: 'look_2_for_collection_3', id: 16}]},
 ]
 const collections_mock_data = [
-  {name: 'Collection 1', id: 1},
-  {name: 'Collection 2', id: 2},
-  {name: 'Collection 3', id: 3}
+  {
+    designer: 'DESIGNER NAME A',
+    collectionName: 'NUDE',
+    season: 'SS\'19',
+    link: '/test1',
+    primaryImageUrl: '/static/slide_01.jpg',
+    id: 1,
+    themeBlack: false,
+  },
+  {
+    designer: 'DESIGNER NAME B',
+    collectionName: 'THE REAL PANTS',
+    season: 'SS\'19',
+    link: '/test2',
+    primaryImageUrl: '/static/slide_02.jpg',
+    id: 2,
+    themeBlack: true,
+  },
+  {
+    designer: 'DESIGNER NAME C',
+    collectionName: 'FABRIK',
+    season: 'SS\'19',
+    link: '/test3',
+    primaryImageUrl: '/static/slide_03.jpg',
+    id: 3,
+    themeBlack: false,
+  },
+  {
+    designer: 'DESIGNER NAME D',
+    collectionName: 'SUMMER DRESSES',
+    season: 'SS\'19',
+    link: '/test4',
+    primaryImageUrl: '/static/slide_04.jpg',
+    id: 4,
+    themeBlack: false,
+  }
 ]
 
 // --------------- above can be deleted when using apis ---------------- //

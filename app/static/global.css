@@ -23,7 +23,8 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 12px;
   line-height: 1em;
-  color: black;
+  color: white;
+  background-color: black;
   min-width: 320px;
 }
 
@@ -82,6 +83,9 @@ button::-moz-focus-inner,
   padding: 0;
 }
 
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
 
 .row {
   display: flex;

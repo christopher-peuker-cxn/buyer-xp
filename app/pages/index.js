@@ -1,63 +1,41 @@
-import { useState, Fragment } from 'react';
+import axios from 'axios';
+import API_URL from '../utils/basepath';
+import { useState, useRef, useEffect, Fragment } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Page from '../layouts/page';
+import VideoPlayer from '../components/utils/video_player';
 import css from './index.scss';
 
 import CollectionSlideWrapper from '../components/collections/collection_slide_wrapper';
 
 const FAKE_DATA = {
   video: {
-    url: 'https://www.youtube-nocookie.com/embed/CVgnzuJgI94?modestbranding=1&rel=0&autohide=1&showinfo=0&controls=0&autoplay=1&loop=1&enablejsapi=1',
-  },
-  slides: [
-    {
-      designer: 'DESIGNER NAME',
-      collectionName: 'NUDE',
-      season: 'SS\'19',
-      link: '/test1',
-      url: '/static/slide_01.jpg',
-      id: 1,
-      themeBlack: false,
-    },
-    {
-      designer: 'DESIGNER NAME',
-      collectionName: 'THE REAL PANTS',
-      season: 'SS\'19',
-      link: '/test2',
-      url: '/static/slide_02.jpg',
-      id: 2,
-      themeBlack: true,
-    },
-    {
-      designer: 'DESIGNER NAME',
-      collectionName: 'FABRIK',
-      season: 'SS\'19',
-      link: '/test3',
-      url: '/static/slide_03.jpg',
-      id: 3,
-      themeBlack: false,
-    },
-  ]
+    desktopSrc: 'https://content.jwplatform.com/videos/7veAA6F4-vkKFSBlV.mp4',
+    // desktopSrc: '/static/static_test_video.mp4',
+    mobileSrc: 'https://content.jwplatform.com/videos/7veAA6F4-gFpIvlsJ.mp4',
+    poster: 'https://content.jwplatform.com/thumbs/7veAA6F4-1280.jpg'
+  }
 }
 
 const Index = (props) => {
-  const [videoInactive, setVideoInactive] = useState(false);
+  const [showCollections, setShowCollection] = useState(false);
   const [videoFadeOut, setVideoFadeOut] = useState(false);
-  const [videoSrc, setVideoSrc] = useState(FAKE_DATA.video.url);
+
+  const videoPlayer = useRef(null);
 
   const wrapperAnimation = useSpring({
-    transform: videoInactive ? 'translateX(0%)' : 'translateX(100%)',
+    transform: showCollections ? 'translateX(0%)' : 'translateX(100%)',
     config: {
       tension: 100
     }
   })
 
   const fadeOut = useSpring({
-    opacity: videoFadeOut ? 1 : 0,
+    opacity: videoFadeOut ? 0 : 1,
     onRest: () => {
       if (videoFadeOut) {
-        setVideoInactive(true);
-        setVideoSrc('');
+        videoPlayer.current.pause();
+        setShowCollection(true);
       }
     }
   })
@@ -65,15 +43,21 @@ const Index = (props) => {
   return (
     <Page title='Homepage'>
       <Fragment>
-        <iframe className={ css.videoWrapper } src={ videoSrc } frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
-        <animated.div style={ fadeOut } className={ css.videoWrapperOverlay } onClick={() => setVideoSrc(videoSrc? '' : FAKE_DATA.video.url) }/>
+        <animated.div style={ fadeOut } className={ css.videoWrapperOverlay }>
+          <VideoPlayer reference={ videoPlayer } mp4Src={ FAKE_DATA.video.desktopSrc } mp4SrcSmall={ FAKE_DATA.video.mobileSrc } poster={ FAKE_DATA.video.poster } classes={ css.videoWrapper } onEnded={ () => setShowCollection(true) } autoPlay='autoplay'/>
+        </animated.div>
         <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW —></div>
         <animated.div className={ css.animationWrapper } style={ wrapperAnimation } >
-          <CollectionSlideWrapper slides={ FAKE_DATA.slides }/>
+          <CollectionSlideWrapper slides={ props.collections }/>
         </animated.div>
       </Fragment>
     </Page>
   )
+}
+
+Index.getInitialProps = async (req) => {
+  const response = await axios(`${API_URL}/home`);
+  return { ...response.data }
 }
 
 export default Index;
