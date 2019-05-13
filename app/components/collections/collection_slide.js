@@ -1,17 +1,18 @@
-// import { useSpring } from 'react-spring';
-// import { animated } from 'react-spring/renderprops-universal';
-import { Link } from '../../server/routes';
+import { Link } from '../../services/routes';
 import css from './collection_slide.scss';
 import cx from 'classnames';
 
-const CollectionSlide = ({ url, name, id, classes }) => {
+const CollectionSlide = ({ primaryImageUrl, designer, collectionName, season, id, themeBlack, classes }) => {
   return (
     <div className={ cx(css.collectionSlide, classes) }>
       <Link route='collection' params={{id: id}}>
         <a style={{ height: '100%' }}>
-          <div className={ css.collectionImage } style={{ backgroundImage: `url(${url})` }}/>
+          <div className={ css.collectionImage } style={{ backgroundImage: `url(${primaryImageUrl})` }}/>
+          <div className={ css.designerNameWrapper }>
+            <h4 className={ cx(css.designerName, { [css.themeBlack]: themeBlack }) }>{ `${designer} ${season}` }</h4>
+          </div>
           <div className={ css.collectionNameWrapper }>
-            <h4 className={ css.collectionName }>{ name }</h4>
+            <h2 className={ cx(css.collectionName, { [css.themeBlack]: themeBlack }) }>{ collectionName } <br/> { `— ${season}` }</h2>
           </div>
         </a>
       </Link>
@@ -25,7 +26,7 @@ const CollectionSlide = ({ url, name, id, classes }) => {
 // }
 
 CollectionSlide.deaultProps = {
-  url:    '',
+  primaryImageUrl:    '',
   name:   ''
 }
 
