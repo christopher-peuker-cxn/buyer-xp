@@ -1,8 +1,27 @@
-FROM node:8.10.0-alpine
-RUN mkdir -p /usr/src/app
+FROM node:10
+
+ENV NODE_ENV production
+ENV PORT 3000
+
+# ~~~ Bundle app source
 WORKDIR /usr/src/app
-COPY package*.json /usr/src/app/
-RUN npm install --production
+COPY package*.json ./
+# ~~~
+
+# ~~~ Install app dependencies
+RUN npm install
+# ~~~
+
+# ~~~ Copying source files
 COPY . .
-EXPOSE 3000
-CMD [ "npm", "run", "start" ]
+# ~~~
+
+# ~~~ Build the project
+RUN npm run build
+# ~~~
+
+# ~~~ Run command
+EXPOSE ${PORT}
+CMD [ "npm", "start" ]
+# ~~~
+
