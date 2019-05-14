@@ -9,12 +9,13 @@ const Page = ({ children, title }) => {
     <Fragment>
       <Head>
         <title>{`CXN Fashion - ${ title }`}</title>
+        <link rel='stylesheet' type='text/css' href='/static/global.css'/>
+        <link rel='stylesheet' type='text/css' href='/static/design_system/typography.css'/>
         <meta
           nasme='viewport'
           content='initial-scale=1.0, width=device-width'
           key='viewport'
         />
-        <link rel='stylesheet' type='text/css' href='/static/global.css'/>
       </Head>
       <header>
         <Nav />

@@ -1,5 +1,9 @@
 import App, { Container } from 'next/app';
-// import "../components/global_styles/global.scss";
+// import '../static/global.css';
+
+// workaround for css chunks not loading on navigate
+// https://github.com/zeit/next-plugins/issues/282
+import '../static/empty.css'
 
 class MyApp extends App {
   render() {
