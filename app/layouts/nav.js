@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSpring, useSprings, animated } from 'react-spring';
-import { Link } from '../server/routes';
+import { Link } from '../services/routes';
 import { withRouter } from 'next/router';
 import cx from 'classnames';
 
