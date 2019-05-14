@@ -11,12 +11,12 @@ orbs:
 workflows:
   version: 2
   build-and-deploy:
-    filters:
-      branches:
-        only:
-          - master
     jobs:
       - aws-ecr/build_and_push_image:
+          filters:
+            branches:
+              only:
+                - master
           account-url: AWS_ECR_ACCOUNT_URL
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
@@ -27,6 +27,10 @@ workflows:
           workspace-root: ~/project
           checkout: false
       - aws-ecs/deploy-service-update:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - aws-ecr/build_and_push_image
           aws-region: ${AWS_DEFAULT_REGION}
