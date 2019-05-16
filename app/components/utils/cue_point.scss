@@ -1,0 +1,54 @@
+.cuePointWrapper {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #606060;
+  transition: background-color .5s;
+  &.hover {
+    background-color: white;
+  }
+  &.active {
+    background-color: #b50000;
+    .imageThumbnail {
+      border: 1px solid #b50000;
+    }
+  }
+  &:hover {
+    .textWrapper, .imageThumbnail {
+      opacity: 1;
+    }
+  }
+}
+
+.imageThumbnail {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 36px;
+  transform: translate(calc(-50% + 7px), calc(-50% + 7px));
+  border: 1px solid white;
+  opacity: 0;
+  transition: opacity .5s;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.textWrapper {
+  position: absolute;
+  width: 200px;
+  transform: translate(calc(-50% + 7px), -300%);
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.title {
+  display: block;
+  white-space: nowrap;
+}
+
+.copy {
+
+}

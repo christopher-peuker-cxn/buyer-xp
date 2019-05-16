@@ -15,23 +15,23 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  bottom: 40px;
+  bottom: 70px;
 }
 
 .progressBar {
   position: absolute;
   left: 0px;
-  height: 3px;
+  height: 2px;
   margin: 6px 0px;
   pointer-events: none;
-  background-color: rgba(204, 0, 0, 0.5);
+  background-color: #b50000;
 }
 
 .seekBarWrapper {
   position: relative;
   display: inline-block;
-  width: 70%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 900px;
 }
 
 .seekBar {
@@ -46,6 +46,20 @@
   /* Hides the slider so that custom slider can be made */
   -webkit-appearance: none;
   border-radius: 0; /* iOS */
+  transition: background-color .5s;
+
+  &:hover {
+    &::-webkit-slider-runnable-track {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    &::-ms-track {
+      background-color: rgba(255, 255, 255, 1);
+    }
+    &::-moz-range-track {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  }
+
   &:focus {
     outline: none;
   }
@@ -61,23 +75,25 @@
   /* -------------------------------------------------- */
 
   &::-webkit-slider-runnable-track {
-    background: rgba(255, 255, 255, 0.2);
+    transition: background-color .5s;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   &::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 3px;
-      height: 3px;
+      width: 2px;
+      height: 2px;
       background: transparent;
   }
 
   &::-moz-range-track {
-    background: rgba(255, 255, 255, 0.2);
+    transition: background-color .5s;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   ::-moz-range-thumb {
-      width: 3px;
-      height: 3px;
+      width: 2px;
+      height: 2px;
       background: transparent;
       box-sizing: border-box;
       border-radius: 0 !important;
@@ -85,8 +101,8 @@
 
   &::-ms-thumb { 
       background: transparent;
-      height: 3px;
-      width: 3px;
+      height: 2px;
+      width: 2px;
       box-sizing: border-box;
   }
 
@@ -98,10 +114,11 @@
       display: none; 
   }
 
-  &::-ms-track { 
-    background: rgba(255, 255, 255, 0.2);
+  &::-ms-track {
+    transition: background-color .5s;
+    background-color: rgba(255, 255, 255, 0.2);
     color: transparent;
-    height: 3px;
+    height: 2px;
     border: none;
   }
 

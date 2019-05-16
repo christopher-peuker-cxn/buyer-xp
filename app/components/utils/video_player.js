@@ -1,30 +1,30 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import cx from 'classnames';
-import css from './video_player.scss'
+import css from './video_player.scss';
+import CuePoint from './cue_point.js';
 
-const VideoPlayer = (props) => {
+const VideoPlayer = ({
+  classes, poster, cuePoints, desktopSrc, mobileSrc, reference, ...other,
+}) => {
   const [seekBarValue, setSeekBarValue] = useState(0);
-  const {
-    classes,
-    poster,
-    src,
-    mp4Src,
-    mp4SrcSmall,
-    webmSrc,
-    webmSrcSmall,
-    reference,
-    ...options
-  } = props;
+  const [hover, setHover] = useState(false);
 
-  const seekBar = useRef(null);
+  const seekBar = useRef();
 
-  const updateVideoPos = (e) => {
+  // const calcVideoPos = e => {
+  //   // Calculate the video time
+  //   const time = reference.current.duration * (e.target.value / 100);
+  //   updateVideoPos(time);
+  // }
+
+  const updateVideoPos = (e, newTime) => {
+    let percentage = e ? e.target.value : newTime;
     // Calculate the video time
-    const time = reference.current.duration * (e.target.value / 100);
+    const time = reference.current.duration * (percentage / 100);
 
     // update seekbar state
-    setSeekBarValue(time);
+    setSeekBarValue(percentage);
 
     // Update the video time
     reference.current.currentTime = time;
@@ -44,22 +44,20 @@ const VideoPlayer = (props) => {
     <div className={ cx(classes, css.videoWrapper) }>
       <video
         className={ css.video }
-        src={ src }
+        src={ desktopSrc }
         ref={ reference }
-        {...options}
+        {...other}
         onTimeUpdate={ videoTimeUpdate }
         >
-        <source src={ mp4SrcSmall } type="video/mp4" media="all and (max-width: 480px)"/>
-        <source src={ mp4Src } type='video/mp4'/>
-
-        <source src={ webmSrcSmall } type="video/webm" media="all and (max-width: 480px)"/>
-        <source src={ webmSrc }  type='video/webm'/>
+        <source src={ mobileSrc } type="video/mp4" media="all and (max-width: 480px)"/>
+        <source src={ desktopSrc } type='video/mp4'/>
       </video>
       
       <div className={ css.videoControls }>
         <div className={ css.seekBarWrapper }>
-          <input className={ css.seekBar } ref={ seekBar } value={ seekBarValue } type='range' onChange={ updateVideoPos }/>
+          <input className={ css.seekBar } ref={ seekBar } value={ seekBarValue } type='range' step='1' onChange={ updateVideoPos } onInput={ updateVideoPos } onMouseEnter={() => setHover(true) } onMouseLeave={() => setHover(false) }/>
           <animated.div style={ progressStyle } className={ css.progressBar }/>
+          { cuePoints.map(cuePoint => <CuePoint key={ cuePoint.id } { ...cuePoint } progressPercent={ seekBarValue } hover={ hover } updateVideoPos={ updateVideoPos }/>) }
         </div>
       </div>
     </div>
@@ -71,9 +69,3 @@ const VideoPlayer = (props) => {
 // }
 
 export default VideoPlayer;
-
-        {/* <button type="button" id="play-pause">Play</button>
-        <input ref={ seekBar } type='range'  value='0'>
-        <button type="button" id="mute">Mute</button>
-        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1">
-        <button type="button" id="full-screen">Full-Screen</button> */}
