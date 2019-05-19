@@ -26,6 +26,7 @@ body {
   color: white;
   background-color: black;
   min-width: 320px;
+  overflow: hidden;
 }
 
 main {

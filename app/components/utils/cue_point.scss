@@ -38,17 +38,21 @@
 
 .textWrapper {
   position: absolute;
-  width: 200px;
-  transform: translate(calc(-50% + 7px), -300%);
+  transform: translate(calc(-50% + 7px), -200px);
   opacity: 0;
   transition: opacity .5s;
+  font-family: serif;
+  font-style: italic;
 }
 
 .title {
   display: block;
   white-space: nowrap;
+  font-size: 28px;
+  line-height: 28px;
 }
 
 .copy {
-
+  font-size: 64px;
+  line-height: 60px;
 }

@@ -16,29 +16,29 @@ const FAKE_DATA = {
     poster: 'https://content.jwplatform.com/thumbs/7veAA6F4-1280.jpg',
     cuePoints: [
       {
-        name: 'Chapter 01',
-        copy: 'Plunging Bodysuits',
+        name: 'Chapter 01 —',
+        copy: 'plunging bodysuits',
         id: 100,
         time: 14.4,
         thumbnail: 'https://www.numero.com/sites/default/files/images/article_new/slides/balenciaga-printemps-ete-20192.jpg'
       },
       {
-        name: 'Chapter 02',
-        copy: 'Plunging Pants',
+        name: 'Chapter 02 —',
+        copy: 'pityful pants',
         id: 101,
         time: 45.4,
         thumbnail: 'https://www.numero.com/sites/default/files/images/article_new/slides/balenciaga-printemps-ete-20191.jpg'
       },
       {
-        name: 'Chapter 03',
-        copy: 'Plunging Eyewear',
+        name: 'Chapter 03 —',
+        copy: 'enormous eyewear',
         id: 102,
         time: 68,
         thumbnail: 'https://www.numero.com/sites/default/files/images/article_new/slides/balenciaga-printemps-ete-201976.jpg'
       },
       {
-        name: 'Chapter 04',
-        copy: 'Plunging Footwear',
+        name: 'Chapter 04 —',
+        copy: 'fancy footwear',
         id: 103,
         time: 84.2,
         thumbnail: 'https://www.numero.com/sites/default/files/images/article_new/slides/balenciaga-printemps-ete-201971.jpg'

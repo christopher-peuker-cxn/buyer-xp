@@ -30,7 +30,7 @@ const Nav = ({ router }) => {
   const lightModeBg = useSpring({ backgroundColor: lightMode ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0)' });
   const lightModeRack = useSpring({ color: lightMode ? '#000000' : '#FFFFFF', config: { tension: 1000 } });
   const lightModeRackBg = useSpring({ backgroundColor: lightMode ? '#dadada' : '#FFFFFF', config: { tension: 1000 } });
-  const showNavLinks = useSpring({ transform: activeMenu ? 'translateX(0px)' : 'translateX(-58px)', opacity: activeMenu ? 1 : 0 });
+  const showNavLinks = useSpring({ transform: activeMenu ? 'translateX(0px)' : 'translateX(-58px)', opacity: activeMenu ? 1 : 0, pointerEvents: activeMenu ? 'auto' : 'none' });
   const linkWrapper = useSpring({ transform: activeMenu ? 'translateX(58px)' : 'translateX(0px)', opacity: activeMenu ? 0 : 1 });
 
   const logoWhite = useSpring({ opacity: lightMode ? 0 : 1 });
