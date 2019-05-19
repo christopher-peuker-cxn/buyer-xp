@@ -79,7 +79,7 @@ const Index = (props) => {
             { ...FAKE_DATA.video }
             classes={ css.videoWrapper }
             onEnded={ () => setShowCollection(true) }
-            autoPlay='autoplay'/>
+            autoPlay={false}/>
         </animated.div>
         <div className={ css.showCollections } onClick={() => setVideoFadeOut(true)}>TAKE ME TO THE SHOW —></div>
         <animated.div className={ css.animationWrapper } style={ wrapperAnimation } >

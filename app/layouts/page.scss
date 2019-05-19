@@ -1,4 +1,5 @@
 .mainWrapper {
   display: block;
-  min-height: 100vh;
+  margin-top: 58px;
+  min-height: calc(100vh - 58px);
 }

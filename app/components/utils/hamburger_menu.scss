@@ -1,0 +1,52 @@
+.hamburgerMenu {
+  position: relative;
+  display: block;
+  height: 58px;
+  width: 64px;
+  padding: 15px 24px;
+  cursor: pointer;
+}
+
+.hamburgerIcon {
+  position: relative;
+  display: block;
+  height: 1px;
+  width: 16px;
+  top: 14px;
+  background-color: white;
+  transition: background-color .5s;
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    left: 0px;
+    transition: background-color .5s, transform .5s;
+    background-color: white;
+  }
+  &:before {
+    top: -7px;
+  }
+
+  &:after {
+    bottom: -7px;
+  }
+
+  &.lightMode {
+    background-color: black;
+    &:before, &:after {
+      background-color: black;
+    }
+  }
+  &.active {
+    background-color: transparent;
+    &:before {
+      transform: translateY(7px) rotate(-45deg);
+    }
+  
+    &:after {
+      bottom: -7px;
+      transform: translateY(-7px) rotate(45deg);
+    }
+  }
+}
